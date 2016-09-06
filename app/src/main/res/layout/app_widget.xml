@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/widget_margin"
+    android:id="@+id/widget"
+    android:orientation="horizontal">
+
+
+
+        <TextView
+            android:id="@+id/stock_symbol_widget"
+            style="@style/StockSymbolWidgetTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/bid_price_widget"
+                style="@style/BidPriceWidgetTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10sp"
+                />
+
+            <TextView
+                android:id="@+id/change_widget"
+                style="@style/PercentChangeWidgetTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/percent_change_pill"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                />
+        </LinearLayout>
+
+</LinearLayout>

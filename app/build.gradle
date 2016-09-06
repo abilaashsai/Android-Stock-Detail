@@ -6,7 +6,7 @@ android {
   buildToolsVersion "23.0.1"
 
   defaultConfig {
-    applicationId "com.example.sam_chordas.stockhawk"
+    applicationId "com.sam_chordas.android.stockhawk"
     minSdkVersion 15
     targetSdkVersion 23
     versionCode 1
@@ -27,7 +27,12 @@ repositories {
 dependencies {
 
   compile 'com.google.android.gms:play-services-gcm:8.4.0'
+  compile 'com.jakewharton:butterknife:6.1.0'
+  compile 'com.jjoe64:graphview:4.0.0'
+  compile 'com.github.bumptech.glide:glide:3.5.2'
   compile 'com.squareup.okhttp:okhttp:2.5.0'
+  compile 'com.squareup.retrofit2:retrofit:2.0.2'
+  compile 'com.squareup.retrofit2:converter-gson:2.0.2'
   apt 'net.simonvt.schematic:schematic-compiler:0.6.3'
   compile 'net.simonvt.schematic:schematic:0.6.3'
   compile 'com.melnykov:floatingactionbutton:1.2.0'
