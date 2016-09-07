@@ -16,7 +16,7 @@ public class DetailView extends AppCompatActivity {
         setContentView(R.layout.activity_detail_view);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
-        String ss = intent.getStringExtra("name");
+        String ss = intent.getStringExtra(getResources().getString(R.string.name));
     }
 
     @Override

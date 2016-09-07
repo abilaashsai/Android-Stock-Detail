@@ -101,7 +101,7 @@ public class FetchDetailStock extends AsyncTask {
                     new DataPoint(6, average.get(5)),
                     new DataPoint(7, average.get(6))
             });
-            detailViewFragment.graphView.setContentDescription("Graph showing past seven days " + average.get(0).toString() + " " + average.get(1).toString() + " " + average.get(2).toString() + " " + average.get(3).toString() + " " + average.get(4).toString() + " " + average.get(5).toString() + " " + average.get(6).toString());
+            detailViewFragment.graphView.setContentDescription(average.get(0).toString() + " " + average.get(1).toString() + " " + average.get(2).toString() + " " + average.get(3).toString() + " " + average.get(4).toString() + " " + average.get(5).toString() + " " + average.get(6).toString());
             detailViewFragment.graphView.addSeries(series1);
         }
     }

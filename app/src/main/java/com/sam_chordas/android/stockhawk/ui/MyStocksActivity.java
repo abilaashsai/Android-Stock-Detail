@@ -53,62 +53,15 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     TextView noInternet;
 
     public void updateDB() {
-        mCursor = getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,
-                new String[]{QuoteColumns.SYMBOL}, QuoteColumns.SYMBOL + " = ?",
-                new String[]{"yhoo"},
-                null);
-        if (mCursor.getCount() == 0) {
-            mServiceIntent.putExtra("tag", "add");
-            mServiceIntent.putExtra("symbol", "yhoo");
-            if (isConnected) {
-                startService(mServiceIntent);
-            } else {
-                networkToast();
-            }
-        }
-        mCursor = getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,
-                new String[]{QuoteColumns.SYMBOL}, QuoteColumns.SYMBOL + " = ?",
-                new String[]{"aapl"},
-                null);
-        if (mCursor.getCount() == 0) {
-
-            mServiceIntent.putExtra("tag", "add");
-            mServiceIntent.putExtra("symbol", "aapl");
-            if (isConnected) {
-                startService(mServiceIntent);
-            } else {
-                networkToast();
-            }
-        }
-        mCursor = getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,
-                new String[]{QuoteColumns.SYMBOL}, QuoteColumns.SYMBOL + " = ?",
-                new String[]{"goog"},
-                null);
-        if (mCursor.getCount() == 0) {
-
-            mServiceIntent.putExtra("tag", "add");
-            mServiceIntent.putExtra("symbol", "goog");
-            if (isConnected) {
-                startService(mServiceIntent);
-            } else {
-                networkToast();
-            }
-        }
-        mCursor = getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,
-                new String[]{QuoteColumns.SYMBOL}, QuoteColumns.SYMBOL + " = ?",
-                new String[]{"msft"},
-                null);
-        if (mCursor.getCount() == 0) {
-
-            mServiceIntent.putExtra("tag", "add");
-            mServiceIntent.putExtra("symbol", "msft");
-            if (isConnected) {
-                startService(mServiceIntent);
-            } else {
-                networkToast();
-            }
-        }
-
+        mServiceIntent.putExtra(getResources().getString(R.string.tag), getResources().getString(R.string.add));
+        mServiceIntent.putExtra(getResources().getString(R.string.symbol), getResources().getString(R.string.aapl));
+        startService(mServiceIntent);
+        mServiceIntent.putExtra(getResources().getString(R.string.tag), getResources().getString(R.string.add));
+        mServiceIntent.putExtra(getResources().getString(R.string.symbol), getResources().getString(R.string.goog));
+        startService(mServiceIntent);
+        mServiceIntent.putExtra(getResources().getString(R.string.tag), getResources().getString(R.string.add));
+        mServiceIntent.putExtra(getResources().getString(R.string.symbol), getResources().getString(R.string.msft));
+        startService(mServiceIntent);
     }
 
     @Override
@@ -141,6 +94,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         } else {
             noInternet.setVisibility(View.VISIBLE);
         }
+        updateDB();
         mCursorAdapter = new QuoteCursorAdapter(this, null);
 
         recyclerView.addOnItemTouchListener(new RecyclerViewItemClickListener(this,
@@ -157,7 +111,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                         String selected = textView.getText().toString();
 
                         Intent intent = new Intent(mContext, DetailView.class);
-                        intent.putExtra("name", selected);
+                        intent.putExtra(getResources().getString(R.string.name), selected);
                         startActivity(intent);
                     }
 
@@ -167,7 +121,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setContentDescription("Search for a Stock Symbol");
+        fab.setContentDescription(getResources().getString(R.string.search_stock_symbol));
         fab.attachToRecyclerView(recyclerView);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,15 +143,15 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                                             new String[]{input.toString()}, null);
                                     if (c.getCount() != 0) {
                                         Toast toast =
-                                                Toast.makeText(MyStocksActivity.this, "This stock is already saved!",
+                                                Toast.makeText(MyStocksActivity.this, getResources().getString(R.string.stock_saved),
                                                         Toast.LENGTH_LONG);
                                         toast.setGravity(Gravity.CENTER, Gravity.CENTER, 0);
                                         toast.show();
                                         return;
                                     } else {
                                         // Add the stock to DB
-                                        mServiceIntent.putExtra("tag", "add");
-                                        mServiceIntent.putExtra("symbol", input.toString());
+                                        mServiceIntent.putExtra(getResources().getString(R.string.tag), getResources().getString(R.string.add));
+                                        mServiceIntent.putExtra(getResources().getString(R.string.symbol), input.toString());
                                         startService(mServiceIntent);
                                     }
                                 }
@@ -218,7 +172,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         if (isConnected) {
             long period = 3600L;
             long flex = 10L;
-            String periodicTag = "periodic";
+            String periodicTag = getResources().getString(R.string.periodic);
 
             // create a periodic task to pull stocks once every hour after the app has been opened. This
             // is so Widget data stays up to date.
@@ -245,7 +199,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
             noInternet.setVisibility(View.INVISIBLE);
-            updateDB();
+            // updateDB();
         } else {
             noInternet.setVisibility(View.VISIBLE);
 
@@ -302,17 +256,23 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                 QuoteColumns.ISCURRENT + " = ?",
                 new String[]{"1"},
                 null);
+
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        mCursorAdapter.swapCursor(data);
-        mCursor = data;
+        if (loader.getId() == 0) {
+            mCursorAdapter.swapCursor(data);
+            mCursor = data;
+        }
+
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        mCursorAdapter.swapCursor(null);
+        if (loader.getId() == 0) {
+            mCursorAdapter.swapCursor(null);
+        }
     }
 
 }

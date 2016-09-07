@@ -49,7 +49,7 @@ public class DetailViewFragment extends Fragment {
         ButterKnife.inject(this, rootView);
 
 
-        String name = getActivity().getIntent().getStringExtra("name");
+        String name = getActivity().getIntent().getStringExtra(getResources().getString(R.string.name));
 
 
         Cursor c = getActivity().getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,
@@ -58,22 +58,22 @@ public class DetailViewFragment extends Fragment {
                 null);
         c.moveToNext();
 
-        graphView.setTitle("Past 7 Days");
-        graphView.getGridLabelRenderer().setHorizontalAxisTitle("Day");
-        graphView.getGridLabelRenderer().setVerticalAxisTitle("Price");
+        graphView.setTitle(getResources().getString(R.string.past_seven_days));
+        graphView.getGridLabelRenderer().setHorizontalAxisTitle(getResources().getString(R.string.day));
+        graphView.getGridLabelRenderer().setVerticalAxisTitle(getResources().getString(R.string.price));
 
-        oneYearTarget.setText("One Year Target");
-        oneYearTarget.setContentDescription("One Year Target " + c.getString(c.getColumnIndex(QuoteColumns.ONEYEARPRICE)));
+        oneYearTarget.setText(getResources().getString(R.string.one_year_target));
+        oneYearTarget.setContentDescription(getResources().getString(R.string.one_year_target) + c.getString(c.getColumnIndex(QuoteColumns.ONEYEARPRICE)));
         oneYearTargetPrice.setText(c.getString(c.getColumnIndex(QuoteColumns.ONEYEARPRICE)));
 
-        EPSEstimateCurrentYear.setText("EPS Estimate Current Year");
-        EPSEstimateCurrentYear.setContentDescription("EPS Estimate Current Year" + c.getString(c.getColumnIndex(QuoteColumns.EPSCURRENTYEAR)) + " and percent " + c.getString(c.getColumnIndex(QuoteColumns.EPSCURRENTYEARPERCENT)));
+        EPSEstimateCurrentYear.setText(getResources().getString(R.string.eps_estimate_current_year));
+        EPSEstimateCurrentYear.setContentDescription(getResources().getString(R.string.eps_estimate_current_year) + c.getString(c.getColumnIndex(QuoteColumns.EPSCURRENTYEAR)) + getResources().getString(R.string.and_percent) + c.getString(c.getColumnIndex(QuoteColumns.EPSCURRENTYEARPERCENT)));
         EPSEstimateCurrentYearPrice.setText(c.getString(c.getColumnIndex(QuoteColumns.EPSCURRENTYEAR)));
         EPSEstimateCurrentYearPercent.setText(c.getString(c.getColumnIndex(QuoteColumns.EPSCURRENTYEARPERCENT)));
 
 
-        EPSEstimateNextYear.setText("EPS Estimate Next Year");
-        EPSEstimateNextYear.setContentDescription("EPS Estimate Next Year " + c.getString(c.getColumnIndex(QuoteColumns.EPSNEXTYEAR)) + " and percent " + c.getString(c.getColumnIndex(QuoteColumns.EPSNEXTYEARPERCENT)));
+        EPSEstimateNextYear.setText(getResources().getString(R.string.eps_estimate_next_year));
+        EPSEstimateNextYear.setContentDescription(getResources().getString(R.string.eps_estimate_next_year) + c.getString(c.getColumnIndex(QuoteColumns.EPSNEXTYEAR)) + getResources().getString(R.string.and_percent) + c.getString(c.getColumnIndex(QuoteColumns.EPSNEXTYEARPERCENT)));
         EPSEstimateNextYearPrice.setText(c.getString(c.getColumnIndex(QuoteColumns.EPSNEXTYEAR)));
         EPSEstimateNextYearPercent.setText(c.getString(c.getColumnIndex(QuoteColumns.EPSNEXTYEARPERCENT)));
         FetchDetailStock fetchDetailStock = new FetchDetailStock(this);

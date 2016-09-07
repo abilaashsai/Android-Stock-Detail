@@ -18,8 +18,8 @@
     <string name="content_test">
         بحث عن الأوراق المالية رمز
     </string>
-    <string name="input_hint">FB</string>
-    <string name="input_prefill"></string>
+  <string name="input_hint">FB</string>
+  <string name="input_prefill"></string>
     <string name="network_toast">
         اه اوه! هذا التطبيق يتطلب اتصالبالإنترنت
 
@@ -27,4 +27,33 @@
     <string name="no_internet">
         لا انترنت. الأسهم يتم تحديث .
     </string>
+    <string name="search_stock_symbol">
+        بحث عن الأوراق المالية رمز
+    </string>
+    <string name="stock_saved">
+        يتم حفظ هذه الأسهم بالفعل!
+    </string>
+    <string name="past_seven_days">
+        الماضية 7 أيام
+    </string>
+    <string name="day">
+        يوم
+    </string>
+    <string name="price">
+        السعر
+    </string>
+    <string name="one_year_target">
+        سنة واحدة الهدف
+    </string>
+    <string name="eps_estimate_current_year">
+        EPS تقديرات السنة الحالية
+    </string>
+    <string name="and_percent">
+        و في المئة
+    </string>
+    <string name="eps_estimate_next_year">
+        EPS تقديرات العام القادم
+    </string>
+
+
 </resources>
