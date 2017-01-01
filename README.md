@@ -1,19 +1,39 @@
-# Stock-Hawk
-Project 3: Stock Hawk!
+#Android-Stock-Detail
+===================================
 
-Bugs Resolved by the inputs given by User:
+Flexibility of adding **Favourite Stock** to the list is great advantage for the the user and can be followed instantly. Detailed information of each stock such has the market value for past seven days is displayed in graphical representation. Localization for Europe has also been achieved. 
 
-1. Detail view of Stock can be viewed in graph for past seven days
-2. Widget has been added
-3. People from Europe can also use the application as it can be translated to Arabic
-4. Stock symbols does not repeat in Main View
-5. App does not crash when there is no internet
-6. App does not crash when there is no symbol match
-7. Stores all details of the symbol in DB including the Detail view details
-8. Accessibility is improved
-9. Initial 4 symbols will be populated without any issues and whenever internet is available
-10. This app works on offline
+##Features
+---------------
+- Detail view of Stock can be viewed in graph for past seven days
+- Widget has been added
+- People from Europe can also use the application as it can be translated to Arabic
+- Stock symbols does not repeat in Main View
+- App does not crash when there is no internet
+- App does not crash when there is no symbol match
+- Stores all details of the symbol in DB including the Detail view details
+- Accessibility is improved
+- Initial 4 symbols will be populated without any issues and whenever internet is available
+- This app works on offline
 
+##Run it on your machine
+---------------
+- **Clone the project**:
+  Go to any directory in your machine and run the below command on the terminal:
+  ```
+  git clone https://github.com/abilaashsai/Android-Stock-Detail.git
+  ```
+  
+- **Run the project**:
+  I use Android Studio. Here you have to _Import_ the project and _Run_ on _mobile_.
+
+##Contribution
+-------
+Patches are encouraged, and may be submitted by forking this project and
+submitting a pull request through GitHub.
+
+##Screenshot
+-------
 Main View
 ![Alt text](https://github.com/abilaashsai/Stock-Hawk/blob/master/MainView.png "Main UI")
 
@@ -25,3 +45,7 @@ Detail View
 
 Widget
 ![Alt text](https://github.com/abilaashsai/Stock-Hawk/blob/master/widget.png "Widget")
+
+License
+-------
+The contents of this repository are covered under the [MIT License](https://github.com/abilaashsai/Android-Stock-Detail/blob/master/LICENSE).
