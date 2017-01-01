@@ -1,7 +1,7 @@
 #Android-Stock-Detail
 ===================================
 
-Flexibility of adding **Favourite Stock** to the list is great advantage for the the user and can be followed instantly. Detailed information of each stock such has the market value for past seven days is displayed in graphical representation. Localization for Europe has also been achieved. 
+Flexibility of adding **Favourite Stock** to the list is great advantage for the the user and widget is added to follow stoks instantly. Detailed information of each stock such has the market value for past seven days is displayed in graphical representation. Localization for Europe has also been achieved. 
 
 ##Features
 ---------------
